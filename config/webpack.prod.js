@@ -11,7 +11,8 @@ const isWindows = process.platform === 'win32';
 module.exports = {
     entry: {
         index: './src/fonteditor/index',
-        editor: './src/fonteditor/editor'
+        editor: './src/fonteditor/editor',
+        connect: './src/fonteditor/connect'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -62,6 +63,12 @@ module.exports = {
             filename: 'editor.html',
             template: path.resolve(__dirname, '../editor.tpl'),
             chunks: ['editor']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'connect',
+            filename: 'connect.html',
+            template: path.resolve(__dirname, '../connect.html'),
+            chunks: ['connect']
         }),
         new MiniCssPlugin({
             filename: 'css/[name]-[chunkhash:8].css',
